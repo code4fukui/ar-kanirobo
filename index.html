@@ -3,24 +3,12 @@
 <script type="module">
 import * as eg from "https://js.sabae.cc/egvr.js";
 
-const bg = eg.sky("kano-kanirobo.360vr.jpg");
-
-//eg.box(0, -10 / 2, 0, 10);
-eg.model("./kanirobo1.glb", 2.5, 0, 0.5, 0, 8); // niigata おひとりさま
-eg.model("./kanirobo2.glb", -2.5, 0, 0.5, 180, 8); // 
+eg.model("./kanirobo1.glb", 2.5, 0, 0.5, 0, 8); // niigata
+eg.model("./kanirobo2.glb", -2.5, 0, 0.5, 180, 8); // ishikawa
 eg.model("./kanirobo3.glb", 0, 0, -1.8, 0, 8); // ishikawa
 eg.model("./kanirobo4.glb", 2.5, 0, -3, 0, 8); // toyama
 eg.model("./kanirobo5.glb", -2.5, 0, -3, 0, 8); // fukui
 
-eg.scene.addEventListener("enter-vr", function () {
-  if (eg.scene.is("ar-mode")) {
-    bg.setAttribute("visible", false);
-  } else {
-    bg.setAttribute("visible", true);
-  }
-});
-eg.scene.addEventListener("exit-vr", function () {
-  bg.setAttribute("visible", defbg);
-});
+eg.sky("kano-kanirobo.360vr.jpg");
 
 </script>
