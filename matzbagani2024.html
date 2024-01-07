@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+<title>ARカニロボ</title>
+<script type="module">
+import * as eg from "https://js.sabae.cc/egvr.js";
+
+const img = eg.image("./matzbagani2024.png", 0, 0, -1.8, 3.6, 3.6);
+img.setAttribute("rotation", { x: -90, y: 0, z: 0});
+
+const r1 = eg.model("./kaniinu.glb", 2, 0, -2.5, 0, 8);
+const r2 = eg.model("./dojokani.glb", -2, 0, -2.5, 90, 8);
+
+const m1 = eg.model("./kaniinu.glb", 1.2, 0, -0.2, 180, 1);
+const m2 = eg.model("./dojokani.glb", -1.2, 0, -0.2, -90, 1);
+
+</script>
