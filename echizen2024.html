@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+<title>AR越前がにロボコン2024</title>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://threejs.org/build/three.module.js",
+    "three/addons/": "https://threejs.org/examples/jsm/"
+  }
+}
+</script>
+<!--
+https://code4fukui.github.io/three.js/build/three.module.js",
+    
+    -->
+</head><body>
+<script type="module">
+import { scene, renderer } from "https://code4fukui.github.io/vanta/vanta-birds-vr.js";
+//import { AsyncGLTFLoader } from "https://code4fukui.github.io/ar-mmd/AsyncGLTFLoader.js";
+//import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { GLTFLoader } from "https://threejs.org/examples/jsm/loaders/GLTFLoader.js";
+import * as THREE from "three";
+
+//renderer.outputEncoding = THREE.SRGBColorSpace;
+const ambientLight = new THREE.AmbientLight(0xffffff, 2.0); // 色と強度
+scene.add(ambientLight);
+
+const loadGLB = async (path) => {
+  const gltfloader = new GLTFLoader();
+  const data = await (await fetch(path)).arrayBuffer();
+  const mesh = (await gltfloader.parseAsync(data, "")).scene;
+  return mesh;
+};
+
+const field = await loadGLB("./field-fukui.glb");
+field.position.y = -1.4;
+field.position.z = -2;
+scene.add(field);
+
+const kani = await loadGLB("./kanimaru.glb");
+kani.position.y = -0.62;
+kani.position.z = -0.4;
+scene.add(kani);
+
+setInterval(() => {
+  kani.rotation.y += 0.01;
+}, 1000 / 60);
+
+</script>
